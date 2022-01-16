@@ -15,9 +15,14 @@ public class WeatherService {
     private final WeatherRepository weatherRepository;
     private final ObjectMapper objectMapper;
 
-    List<Weather> getAllWeather() {
+    List<Weather> getWeather() {
         return weatherRepository.findAll();
     }
+
+    public static String addLocation(String requestBody) {
+        return "";
+    }
+
 
     Weather createWeather(float latitude, float longitude, String city, String country) {
         if (city == null || country == null || city.isBlank() || country.isBlank() || latitude > 90 || latitude < -90 || longitude > 180 || longitude < -180) {
