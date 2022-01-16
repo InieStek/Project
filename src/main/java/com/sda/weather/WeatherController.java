@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class WeatherController {
+
     private final WeatherService weatherService;
     private final ObjectMapper objectMapper;
 }

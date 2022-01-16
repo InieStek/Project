@@ -12,12 +12,13 @@ public class WeatherRepository {
 
     private final SessionFactory sessionFactory;
 
-    public void save(Weather weather) {
+    public Weather save(Weather weather) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.save(weather);
         transaction.commit();
         session.close();
+        return weather;
     }
 
     public Weather findById(Long id) {
