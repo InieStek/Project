@@ -2,6 +2,8 @@ package com.sda.weather;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 public class WeatherService {
     private final WeatherRepository weatherRepository;
@@ -19,5 +21,10 @@ public class WeatherService {
 
         Localization localizationSave = weatherRepository.save(localization);
         return localizationSave;
+    }
+
+    List<Localization> getAllLocalizations() {
+        List<Localization> localizations = weatherRepository.findAll();
+        return localizations;
     }
 }
