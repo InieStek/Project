@@ -1,4 +1,4 @@
-package com.sda.weather;
+package com.sda.weather.localization;
 
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 @RequiredArgsConstructor
-public class WeatherRepository {
+public class LocalizationRepository {
 
     private final SessionFactory sessionFactory;
 

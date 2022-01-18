@@ -3,6 +3,9 @@ package com.sda.weather;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sda.frontend.UserInterface;
+import com.sda.weather.localization.LocalizationController;
+import com.sda.weather.localization.LocalizationRepository;
+import com.sda.weather.localization.LocalizationService;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -23,12 +26,12 @@ public class Application {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
 
-        WeatherRepository weatherRepository = new WeatherRepository(sessionFactory);
-        WeatherService weatherService = new WeatherService(weatherRepository);
-        WeatherController weatherController = new WeatherController(weatherService, objectMapper);
+        LocalizationRepository localizationRepository = new LocalizationRepository(sessionFactory);
+        LocalizationService localizationService = new LocalizationService(localizationRepository);
+        LocalizationController localizationController = new LocalizationController(localizationService, objectMapper);
 
 
-        UserInterface userInterface = new UserInterface(weatherController);
+        UserInterface userInterface = new UserInterface(localizationController);
         userInterface.run();
 
     }
