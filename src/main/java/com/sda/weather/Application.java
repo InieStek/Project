@@ -33,6 +33,6 @@ public class Application {
 
         UserInterface userInterface = new UserInterface(localizationController);
         userInterface.run();
-
+        ;
     }
 }
