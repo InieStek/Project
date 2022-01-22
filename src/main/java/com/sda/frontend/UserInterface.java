@@ -31,7 +31,7 @@ public class UserInterface extends InputMismatchException {
                     createLocalization();
                     break;
                 case 2:
-
+                    getAllLocalizations();
                     break;
                 case 3:
 
@@ -43,6 +43,12 @@ public class UserInterface extends InputMismatchException {
             System.out.println();
         }
     }
+
+    private void getAllLocalizations() {
+        String localizations = localizationController.getAllLocalizations();
+        System.out.println("Odpowiedź serwera: " + localizations);
+    }
+
 
     private void createLocalization() {
         Scanner scanner = new Scanner(System.in);

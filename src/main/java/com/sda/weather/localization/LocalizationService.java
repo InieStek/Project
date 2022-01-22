@@ -3,6 +3,8 @@ package com.sda.weather.localization;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 public class LocalizationService {
 
@@ -21,5 +23,10 @@ public class LocalizationService {
         localization.setLongitude(longitude);
 
         return localizationRepository.save(localization);
+    }
+
+    List<Localization> getAllLocalizations() {
+        List<Localization> localizations = localizationRepository.findAll();
+        return localizations;
     }
 }
