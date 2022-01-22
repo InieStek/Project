@@ -1,13 +1,18 @@
 package com.sda.frontend;
 
+import com.sda.weather.localization.LocalizationController;
 import lombok.RequiredArgsConstructor;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 @RequiredArgsConstructor
-public class UserInterface {
+public class UserInterface extends InputMismatchException {
+
+    private final LocalizationController localizationController;
 
     public void run() {
+
         System.out.println("Aplikacja jest uruchomiona\n");
 
         Scanner scanner = new Scanner(System.in);
@@ -23,7 +28,7 @@ public class UserInterface {
 
             switch (option) {
                 case 1:
-
+                    createLocalization();
                     break;
                 case 2:
 
@@ -37,5 +42,26 @@ public class UserInterface {
             }
             System.out.println();
         }
+    }
+
+    private void createLocalization() {
+        Scanner scanner = new Scanner(System.in);
+        scanner.useLocale(java.util.Locale.US);
+        System.out.println("Podaj nazwę miasta:");
+        String city = scanner.nextLine();
+        System.out.println("Podaj nazwę państwa:");
+        String country = scanner.nextLine();
+        System.out.println("Podaj nazwę regionu:");
+        String region = scanner.nextLine();
+
+        System.out.println("Podaj długość geograficzną:");
+        Float longitude = scanner.nextFloat();
+
+        System.out.println("Podaj szerokość geograficzną:");
+        Float latitude = scanner.nextFloat();
+
+        String requestBody = String.format("{\"city\":\"%s\",\"country\":\"%s\",\"region\":\"%s\",\"longitude\":%s,\"latitude\":%s}", city, country, region, longitude, latitude);
+        String responseBody = localizationController.createLocalization(requestBody);
+        System.out.println("Odpowiedź serwera: " + responseBody);
     }
 }
