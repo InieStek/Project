@@ -6,10 +6,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 @RequiredArgsConstructor
-public class LocalizationRepository {
+public class LocalizationRepository implements LocalizationRepositoryInt {
 
     private final SessionFactory sessionFactory;
 
+    @Override
     public Localization save(Localization localization) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();

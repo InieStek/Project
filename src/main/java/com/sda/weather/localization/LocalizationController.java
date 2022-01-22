@@ -15,7 +15,7 @@ public class LocalizationController {
             LocalizationDTO newLocalization = objectMapper.readValue(data, LocalizationDTO.class);
             Localization localization = localizationService.createLocalization(newLocalization.getCity(), newLocalization.getCountry(), newLocalization.getRegion(), newLocalization.getLatitude(), newLocalization.getLongitude());
             LocalizationDTO localizationDTO = mapToLocalizationDTO(localization);
-            return objectMapper.writeValueAsString(localization);
+            return objectMapper.writeValueAsString(localizationDTO);
         } catch (IllegalArgumentException e) {
             return String.format("{\"message\": \"%s\"}", e.getMessage());
         } catch (JsonProcessingException e) {
@@ -31,5 +31,6 @@ public class LocalizationController {
         localizationDTO.setRegion(localization.getRegion());
         localizationDTO.setLatitude(localization.getLatitude());
         localizationDTO.setLongitude(localization.getLongitude());
+        return localizationDTO;
     }
 }

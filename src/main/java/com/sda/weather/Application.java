@@ -27,7 +27,7 @@ public class Application {
 
 
         LocalizationRepository localizationRepository = new LocalizationRepository(sessionFactory);
-        LocalizationService localizationService = new LocalizationService(localizationRepository);
+        LocalizationService localizationService = new LocalizationService(localizationRepository, objectMapper);
         LocalizationController localizationController = new LocalizationController(localizationService, objectMapper);
 
 
