@@ -45,7 +45,7 @@ public class UserInterface extends InputMismatchException {
     }
 
     private void getAllLocalizations() {
-        String localizations = weatherController.getAllLocalizations();
+        String localizations = localizationController.getAllLocalizations();
         System.out.println("Odpowiedź serwera: " + localizations);
     }
 

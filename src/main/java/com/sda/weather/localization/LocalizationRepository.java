@@ -22,6 +22,7 @@ public class LocalizationRepository implements LocalizationRepositoryInt {
         return localization;
     }
 
+    @Override
     public List<Localization> findAll() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();

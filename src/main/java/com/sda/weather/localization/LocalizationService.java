@@ -26,7 +26,7 @@ public class LocalizationService {
     }
 
     List<Localization> getAllLocalizations() {
-        List<Localization> localizations = weatherRepository.findAll();
+        List<Localization> localizations = localizationRepository.findAll();
         return localizations;
     }
 }
