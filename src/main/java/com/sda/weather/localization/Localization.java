@@ -1,4 +1,4 @@
-package com.sda.weather;
+package com.sda.weather.localization;
 
 import com.sun.istack.NotNull;
 import lombok.Data;

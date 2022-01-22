@@ -1,4 +1,4 @@
-package com.sda.weather;
+package com.sda.weather.localization;
 
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
@@ -8,10 +8,11 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class WeatherRepository {
+public class LocalizationRepository implements LocalizationRepositoryInt {
 
     private final SessionFactory sessionFactory;
 
+    @Override
     public Localization save(Localization localization) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();

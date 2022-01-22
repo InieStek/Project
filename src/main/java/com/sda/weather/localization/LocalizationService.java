@@ -1,12 +1,15 @@
-package com.sda.weather;
+package com.sda.weather.localization;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-public class WeatherService {
-    private final WeatherRepository weatherRepository;
+public class LocalizationService {
+
+    private final LocalizationRepositoryInt localizationRepository;
+    private final ObjectMapper objectMapper;
 
     Localization createLocalization(String city, String country, String region, Float latitude, Float longitude) {
         if (city == null || country == null|| latitude == null || longitude == null || city.isBlank() || country.isBlank() || latitude > 90.0 || latitude < -90.0 || longitude > 180.0 || longitude < -180.0) {
@@ -19,8 +22,7 @@ public class WeatherService {
         localization.setLatitude(latitude);
         localization.setLongitude(longitude);
 
-        Localization localizationSave = weatherRepository.save(localization);
-        return localizationSave;
+        return localizationRepository.save(localization);
     }
 
     List<Localization> getAllLocalizations() {

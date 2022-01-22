@@ -1,6 +1,6 @@
 package com.sda.frontend;
 
-import com.sda.weather.WeatherController;
+import com.sda.weather.localization.LocalizationController;
 import lombok.RequiredArgsConstructor;
 
 import java.util.InputMismatchException;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 @RequiredArgsConstructor
 public class UserInterface extends InputMismatchException {
 
-    private final WeatherController weatherController;
+    private final LocalizationController localizationController;
 
     public void run() {
 
@@ -67,7 +67,7 @@ public class UserInterface extends InputMismatchException {
         Float latitude = scanner.nextFloat();
 
         String requestBody = String.format("{\"city\":\"%s\",\"country\":\"%s\",\"region\":\"%s\",\"longitude\":%s,\"latitude\":%s}", city, country, region, longitude, latitude);
-        String responseBody = weatherController.createLocalization(requestBody);
+        String responseBody = localizationController.createLocalization(requestBody);
         System.out.println("Odpowiedź serwera: " + responseBody);
     }
 }
